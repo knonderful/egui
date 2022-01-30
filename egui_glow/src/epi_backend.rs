@@ -88,6 +88,7 @@ pub fn run(app: Box<dyn epi::App>, native_options: &epi::NativeOptions) -> ! {
                 integration.update(gl_window.window());
             let clipped_meshes = integration.egui_ctx.tessellate(shapes);
 
+            painter.set_texture_filter(crate::painter::TextureFilter::Nearest);
             for (id, image_delta) in textures_delta.set {
                 painter.set_texture(&gl, id, &image_delta);
             }
